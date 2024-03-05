@@ -40,7 +40,8 @@ namespace Praktika_clock
         }
 
         //Функция получения координат конца секундной и минутной стрелок
-        private int[] Get_arrow_sm_coordination(int amount_second /*кол-во сек*/, int length_arrow /*длина стрелки*/)
+        private int[] Get_arrow_sm_coordination(int amount_second /*кол-во сек*/, 
+            int length_arrow /*длина стрелки*/)
         {
             int[] arrow_coord = new int[2];
             amount_second *= 6;   //1 сек - 6 градусов (360/60)
@@ -65,7 +66,9 @@ namespace Praktika_clock
             int amount_hour /*кол-во мин*/, int length_arrow /*длина стрелки*/)
         {
             int[] arrow_coord = new int[2];
-            int amount_time = (int)((length_arrow * 30) + (amount_minut * 0.5));  //1 час - 30 градусов, 1 минута - 0.5 градусов
+
+            //1 час - 30 градусов, 1 минута - 0.5 градусов
+            int amount_time = (int)((length_arrow * 30) + (amount_minut * 0.5)); 
 
             //определение в какой четверти окружности находится конец стрелки
             if (amount_time >= 0 && amount_time <= 180)
@@ -96,30 +99,35 @@ namespace Praktika_clock
 
             //Стираем предыдущее положения секундной стрелки
             arrow_coord = Get_arrow_sm_coordination(amount_second, second_arrow + 4);
-            graph.DrawLine(new Pen(Color.White, 45f), new Point(center_x, center_y), new Point(arrow_coord[0], arrow_coord[1]));
+            graph.DrawLine(new Pen(Color.White, 45f), new Point(center_x, center_y), 
+                new Point(arrow_coord[0], arrow_coord[1]));
 
             // Стираем предыдущее положение минутной стрелки
             arrow_coord = Get_arrow_sm_coordination(amount_minut, minut_arrow + 4);
-            graph.DrawLine(new Pen(Color.White, 40f), new Point(center_x, center_y), new Point(arrow_coord[0], arrow_coord[1]));
+            graph.DrawLine(new Pen(Color.White, 40f), new Point(center_x, center_y), 
+                new Point(arrow_coord[0], arrow_coord[1]));
 
             // Стираем предыдущее положение часовой стрелки
             arrow_coord = Get_arrow_h_coordination(amount_hour % 12, amount_minut, hour_arrow + 4);
-            graph.DrawLine(new Pen(Color.White, 20f), new Point(center_x, center_y), new Point(arrow_coord[0], arrow_coord[1]));
+            graph.DrawLine(new Pen(Color.White, 20f), new Point(center_x, center_y), 
+                new Point(arrow_coord[0], arrow_coord[1]));
 
-            /*----------------------------------------------------------------------------------------------------------------------*/
+            /*------------------------------------------------------------------------------------*/
 
             //Отрисовка часовой стрелки
             arrow_coord = Get_arrow_h_coordination(amount_hour % 12, amount_minut, hour_arrow);
-            graph.DrawLine(new Pen(Color.Gray, 4f), new Point(center_x, center_y), new Point(arrow_coord[0], arrow_coord[1]));
+            graph.DrawLine(new Pen(Color.Gray, 4f), new Point(center_x, center_y), 
+                new Point(arrow_coord[0], arrow_coord[1]));
 
             // Отрисовка минутной стрелки
             arrow_coord = Get_arrow_sm_coordination(amount_minut, minut_arrow);
-            graph.DrawLine(new Pen(Color.Black, 2f), new Point(center_x, center_y), new Point(arrow_coord[0], arrow_coord[1]));
+            graph.DrawLine(new Pen(Color.Black, 2f), new Point(center_x, center_y), 
+                new Point(arrow_coord[0], arrow_coord[1]));
 
             // Отрисовка секундной стрелки.
             arrow_coord = Get_arrow_sm_coordination(amount_second, second_arrow);
-            graph.DrawLine(new Pen(Color.DarkOrange, 2f), new Point(center_x, center_y), new Point(arrow_coord[0], arrow_coord[1]));  
-
+            graph.DrawLine(new Pen(Color.DarkOrange, 2f), new Point(center_x, center_y), 
+                new Point(arrow_coord[0], arrow_coord[1]));  
         }
 
         //Закрытие рабочего окна

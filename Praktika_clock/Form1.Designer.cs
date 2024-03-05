@@ -56,6 +56,7 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(350, 350);
             this.Name = "Clock";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clock";
             this.Load += new System.EventHandler(this.Clock_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_clock)).EndInit();
